@@ -88,7 +88,23 @@ public:
             return "false";
         }
     }
+    static std::vector<int> countPositiveSumNegatives(std::vector<int> input){
+        int positiveCount{};
+        int sumNegative{};
+        for (int i:input){
+            if (i<0){
+                sumNegative+=i;
+            }else{
+                positiveCount+=1;
+            }
+        }
+        return {positiveCount,sumNegative};
+    }
 };
 int main() {
-    std::cout<<Solution::boolean_to_string(false);
+    std::vector<int> input={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15};
+    std::vector<int> ans=Solution::countPositiveSumNegatives(input);
+    for (int i:ans){
+        std::cout<<i<<" ";
+    }
 }
