@@ -107,11 +107,26 @@ public:
         }
         return {count,sum};
     }
+    static std::vector<int> invert(std::vector<int> values) {
+        std::vector<int> inverted{};
+        for (int i: values) {
+            inverted.push_back(-i);
+        }
+        return inverted;
+    }
+    static std::string get_middle(std::string s)
+    {
+        auto pos = s.length() == 0 ? 0 : s.length() / 2 - ( s.length() % 2 == 0 );
+        auto n=1+(s.length()%2==0);
+        auto j=s.length()%2==0;
+if (s.length()%2==0){
+    return s.substr(pos,n);
+}else{
+    return s.substr(pos,j);
+}
+
+    }
 };
 int main() {
-    std::vector<int> input={0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14};
-    std::vector<int> ans=Solution::countPositiveSumNegatives(input);
-    for (int i:ans){
-        std::cout<<i<<" ";
-    }
+    std::cout<<Solution::get_middle("testing");
 }
