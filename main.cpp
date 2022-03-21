@@ -89,20 +89,27 @@ public:
         }
     }
     static std::vector<int> countPositiveSumNegatives(std::vector<int> input){
-        int positiveCount{};
-        int sumNegative{};
-        for (int i:input){
-            if (i<0){
-                sumNegative+=i;
-            }else{
-                positiveCount+=1;
+        std::sort(input.begin(),input.end());
+        int sum{};
+        int count{};
+        if (input.empty()){
+            return {};
+        }else{
+            for (int i:input){
+                if (i<0){
+                    sum+=i;
+                }else if(i>0){
+                    count+=1;
+                }else{
+
+                }
             }
         }
-        return {positiveCount,sumNegative};
+        return {count,sum};
     }
 };
 int main() {
-    std::vector<int> input={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15};
+    std::vector<int> input={0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14};
     std::vector<int> ans=Solution::countPositiveSumNegatives(input);
     for (int i:ans){
         std::cout<<i<<" ";
